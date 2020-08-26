@@ -39,7 +39,7 @@ public class JavaConfig {
 	}
 
 	@Bean
-	//@Primary
+	@Primary
 	ReservationRepository remoteReservationRepository(){
 		return new RemoteReservationRepository();
 	}

@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.triveratravel.model.Reservation;
 import com.triveratravel.repository.ReservationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -23,9 +27,17 @@ import com.triveratravel.repository.ReservationRepository;
  * @author The Trivera Tech Team.
  */
 
+@Service
 public class HotelService {
+
+	@Value("${hotel.name}")
 	private String hotelName;
+
+	@Value("${number.of.rooms}")
 	private int numberOfRooms;
+
+	@Autowired
+	@Qualifier("remote")
 	private ReservationRepository reservationRepository;
 
 	public Integer makeReservation(String nameOnReservation, LocalDate arrivalDate, int numberOfNights) {

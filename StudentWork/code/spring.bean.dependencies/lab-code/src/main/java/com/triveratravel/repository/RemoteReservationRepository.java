@@ -6,6 +6,10 @@ import java.util.Collections;
 import java.util.List;
 
 import com.triveratravel.model.Reservation;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
 
 /**
  * <p>
@@ -24,10 +28,13 @@ import com.triveratravel.model.Reservation;
  * @author The Trivera Tech Team.
  */
 
+@Repository
+@Qualifier("remote")
 public class RemoteReservationRepository implements ReservationRepository {
 
 	private List<Reservation> reservations = new ArrayList<>();
 
+	@PostConstruct
 	public void init() {
 		save(new Reservation("Sid", LocalDate.now(), 4));
 		save(new Reservation("Scrat", LocalDate.now(), 4));

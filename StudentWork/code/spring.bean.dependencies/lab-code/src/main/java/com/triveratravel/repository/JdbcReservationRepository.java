@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,6 +16,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import com.triveratravel.model.Reservation;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -32,8 +35,11 @@ import com.triveratravel.model.Reservation;
  * @author The Trivera Tech Team.
  */
 
+@Repository
+@Qualifier("local")
 public class JdbcReservationRepository implements ReservationRepository {
 
+	@Autowired
 	private DataSource dataSource;
 
 	@Override
