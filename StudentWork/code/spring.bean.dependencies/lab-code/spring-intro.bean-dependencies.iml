@@ -21,6 +21,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-indexer:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.apache.derby:derby:10.14.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.26" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.26" level="project" />

@@ -52,13 +52,12 @@
 			<artifactId>javax.annotation-api</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-indexer</artifactId>
 			<optional>true</optional>
 		</dependency>
-		 -->
+
 		<!--================================================================ -->
 		<dependency>
 			<groupId>org.apache.derby</groupId>
