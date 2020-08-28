@@ -2,6 +2,14 @@ package com.triveratravel.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 /**
  * <p>
  * This component and its source code representation are copyright protected and
@@ -18,16 +26,20 @@ import java.time.LocalDate;
  * 
  * @author The Trivera Tech Team.
  */
-
-public class Reservation {
+@Entity
+@Table(name = "RESERVATIONS")
+public class Reservation extends AbstractPersistable<Integer> {
 
 	public enum Status {
 		NEW, CONFIRMED, CONFLICT, CANCELLED
 	}
 
+	@Column(name = "NAME")
 	private String nameOnReservation;
 	private LocalDate arrivalDate;
+	@Enumerated(EnumType.STRING)
 	private Status status = Status.NEW;
+	@Column(name = "NIGHTS")
 	private int numberOfNights;
 
 	public Reservation() {
@@ -75,7 +87,7 @@ public class Reservation {
 
 	@Override
 	public String toString() {
-		return String.format("Reservation [nameOnReservation=%s, checkIn=%tD, status=%s, numberOfNights=%d]",
-				nameOnReservation, arrivalDate, status, numberOfNights);
+		return String.format("Reservation [id=%d, nameOnReservation=%s, checkIn=%tD, status=%s, numberOfNights=%d]",
+				getId(), nameOnReservation, arrivalDate, status, numberOfNights);
 	}
 }

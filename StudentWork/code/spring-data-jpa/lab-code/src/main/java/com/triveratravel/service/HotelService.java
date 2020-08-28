@@ -1,42 +1,45 @@
 package com.triveratravel.service;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.triveratravel.model.Reservation;
+import com.triveratravel.repository.ReservationRepository;
 
 /**
  * <p>
  * This component and its source code representation are copyright protected and
  * proprietary to Trivera Technologies, LLC., Worldwide
- *
+ * <p>
  * This component and source code may be used for instructional and evaluation
  * purposes only. No part of this component or its source code may be sold,
  * transferred, or publicly posted, nor may it be used in a commercial or
  * production environment, without the express written consent of the Trivera
  * Technologies, Inc.
- *
+ * <p>
  * Copyright (c) 2020 Trivera Technologies, LLC. http://www.triveratech.com
  * </p>
- * 
+ *
  * @author The Trivera Tech Team.
  */
 @Service
 public class HotelService {
 
-	public Integer makeReservation(String nameOnReservation, LocalDate arrivalDate, int numberOfNights) {
+    @Autowired
+    private ReservationRepository reservationRepository;
 
-		// Save the reservation
+    public Integer makeReservation(String nameOnReservation, LocalDate arrivalDate, int numberOfNights) {
+        Reservation reservation = new Reservation(nameOnReservation, arrivalDate, numberOfNights);
+        reservationRepository.save(reservation);
+        return reservation.getId();
+    }
 
-		return null;
-	}
-
-	public List<Reservation> getReservations() {
-
-		return Collections.EMPTY_LIST;
-	}
+    public List<Reservation> getReservations() {
+        List<Reservation> allReservations = reservationRepository.findAll();
+        return allReservations;
+    }
 
 }
