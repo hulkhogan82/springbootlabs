@@ -30,10 +30,10 @@ import com.triveratravel.service.PaymentException;
  * @author The Trivera Tech Team.
  */
 @SpringBootApplication
-public class Application {
+public class SpringPersistenceJdbc {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+		ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringPersistenceJdbc.class, args);
 		HotelService hotelService = applicationContext.getBean(HotelService.class);
 		registerSid(hotelService);
 		registerManfred(hotelService);

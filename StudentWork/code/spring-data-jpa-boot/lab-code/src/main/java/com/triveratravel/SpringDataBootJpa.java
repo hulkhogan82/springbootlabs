@@ -1,11 +1,7 @@
 package com.triveratravel;
 
-import com.triveratravel.service.HotelService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-
-import java.time.LocalDate;
 
 /**
  * <p>
@@ -24,10 +20,10 @@ import java.time.LocalDate;
  * @author The Trivera Tech Team.
  */
 @SpringBootApplication
-public class Application {
+public class SpringDataBootJpa {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(SpringDataBootJpa.class, args);
 
 		/*ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 		HotelService hotelService = applicationContext.getBean(HotelService.class);

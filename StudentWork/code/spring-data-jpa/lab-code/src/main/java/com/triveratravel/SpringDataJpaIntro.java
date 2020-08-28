@@ -22,10 +22,10 @@ import com.triveratravel.service.HotelService;
  * 
  * @author The Trivera Tech Team.
  */
-public class Application {
+public class SpringDataJpaIntro {
 
 	public static void main(String[] args) {
-		Application client = new Application();
+		SpringDataJpaIntro client = new SpringDataJpaIntro();
 		client.test();
 	}
 

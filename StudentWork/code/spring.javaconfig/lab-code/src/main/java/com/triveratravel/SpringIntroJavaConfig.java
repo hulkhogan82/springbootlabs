@@ -21,10 +21,10 @@ import com.triveratravel.service.HotelService;
  * 
  * @author The Trivera Tech Team.
  */
-public class Application {
+public class SpringIntroJavaConfig {
 
 	public static void main(String[] args) {
-		Application client = new Application();
+		SpringIntroJavaConfig client = new SpringIntroJavaConfig();
 		client.test();
 	}
 
