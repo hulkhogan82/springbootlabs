@@ -27,7 +27,9 @@ import java.time.LocalDate;
 public class Application {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+		SpringApplication.run(Application.class, args);
+
+		/*ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 		HotelService hotelService = applicationContext.getBean(HotelService.class);
 
 		Integer reservationNumber = hotelService.makeReservation("Crash", LocalDate.now(), 5);
@@ -36,7 +38,7 @@ public class Application {
 		System.out.println("--- Reservations ---");
 		hotelService.getReservations().forEach(System.out::println);
 		System.out.println("--------------------");
-
+		*/
 	}
 
 }

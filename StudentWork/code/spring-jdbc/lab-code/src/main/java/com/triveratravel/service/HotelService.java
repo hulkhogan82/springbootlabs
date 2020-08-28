@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.triveratravel.model.Reservation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -23,6 +24,7 @@ import com.triveratravel.model.Reservation;
  */
 public interface HotelService {
 
+	@Transactional(rollbackFor = InvalidCardException.class)
 	Reservation makeReservation(String nameOnReservation, String creditCardNumber, LocalDate arrivalDate,
 			int numberOfNights) throws PaymentException, InvalidCardException;
 
