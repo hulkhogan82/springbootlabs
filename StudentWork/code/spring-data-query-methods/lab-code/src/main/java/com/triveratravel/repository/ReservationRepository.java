@@ -26,5 +26,15 @@ import java.util.List;
  * @author The Trivera Tech Team.
  */
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
+    Reservation findOneByReservationNumber(Integer reservationNumber);
 
+    List<Reservation> findByNameOnReservation(String nameOnReservation);
+
+    List<Reservation> findByHotelNameAndNameOnReservationIsLike(String hotelName, String nameOnReservation);
+
+    Integer countReservationsByHotelName(String hotelName);
+
+    List<Reservation> findReservationsByArrivalDate(LocalDate checkIn, Sort sort);
+
+    Page<Reservation> findReservationsByHotelName(String hotelName, Pageable pageable);
 }

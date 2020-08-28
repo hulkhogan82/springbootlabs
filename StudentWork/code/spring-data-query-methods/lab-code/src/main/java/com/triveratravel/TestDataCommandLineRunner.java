@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -42,6 +43,13 @@ public class TestDataCommandLineRunner implements CommandLineRunner {
    @Override
    public void run(String... args) throws Exception {
       addReservations();
+
+      System.out.println("------ All Reservations ------");
+      List<Reservation> allReservations = reservationRepository.findAll();
+      allReservations.forEach(System.out::println);
+      System.out.println("----------findByNameOnReservation(\"Patricia Johnson\")--------------------");
+      allReservations = reservationRepository.findByNameOnReservation("Patricia Johnson");
+      allReservations.forEach(System.out::println);
    }
 
    private void addReservations() {

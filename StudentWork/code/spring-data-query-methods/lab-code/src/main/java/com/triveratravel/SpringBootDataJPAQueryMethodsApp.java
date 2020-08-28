@@ -20,10 +20,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author The Trivera Tech Team.
  */
 @SpringBootApplication
-public class Application {
+public class SpringBootDataJPAQueryMethodsApp {
 
    public static void main(String[] args) {
-      SpringApplication.run(Application.class, args);
+      SpringApplication.run(SpringBootDataJPAQueryMethodsApp.class, args);
    }
 
 }

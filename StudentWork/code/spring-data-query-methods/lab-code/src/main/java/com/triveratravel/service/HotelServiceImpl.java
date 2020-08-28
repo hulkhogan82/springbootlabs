@@ -3,12 +3,13 @@ package com.triveratravel.service;
 import com.triveratravel.model.Reservation;
 import com.triveratravel.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,8 @@ public class HotelServiceImpl implements HotelService {
     * @return an instance or Optional containing the reservation or an empty Optional
     */
    public Optional<Reservation> findReservation(Integer reservationNumber) {
-      return Optional.empty();
+      Reservation reservation = reservationRepository.findOneByReservationNumber(reservationNumber);
+      return Optional.ofNullable(reservation);
    }
 
    /**
@@ -49,17 +51,17 @@ public class HotelServiceImpl implements HotelService {
     * @return A List containing zero or more reservations
     */
    public List<Reservation> findReservations(String nameOnReservation) {
-      return Collections.EMPTY_LIST;
+      return reservationRepository.findByNameOnReservation(nameOnReservation);
    }
 
    /**
-    * Find all reservations for a single hotel, where the name contains the value value specified
+    * Find all reservations for a single hotel, where the name contains the value specified
     * @param hotelName The name of the hotel for which to find reservations
     * @param nameOnReservationLike The (partial) name to search for
     * @return A List containing zero or more reservations
     */
    public List<Reservation> findReservations(String hotelName, String nameOnReservationLike) {
-      return Collections.EMPTY_LIST;
+      return reservationRepository.findByHotelNameAndNameOnReservationIsLike(hotelName, nameOnReservationLike);
    }
 
    /**
@@ -68,7 +70,7 @@ public class HotelServiceImpl implements HotelService {
     * @return A positive integer value
     */
    public int getNumberOfReservations(String hotelName) {
-      return -1;
+      return reservationRepository.countReservationsByHotelName(hotelName);
    }
 
    /**
@@ -77,7 +79,8 @@ public class HotelServiceImpl implements HotelService {
     * @return A List containing zero or more reservations, sorted by the name on the reservation
     */
    public List<Reservation> findReservations(LocalDate arrivalDate) {
-      return Collections.EMPTY_LIST;
+      Sort sort = Sort.by("nameOnReservation").ascending();
+      return reservationRepository.findReservationsByArrivalDate(arrivalDate, sort);
    }
 
    /**
@@ -87,6 +90,7 @@ public class HotelServiceImpl implements HotelService {
     * @return A Page instance containing zero or more (at most 10) Reservation instances
     */
    public Page<Reservation> findReservations(String hotelName, int page) {
-      return Page.empty();
+      PageRequest pageable = PageRequest.of(page - 1, 10);
+      return reservationRepository.findReservationsByHotelName(hotelName, pageable);
    }
 }
