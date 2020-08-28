@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>TT3365</groupId>
+    <artifactId>solution-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>Introduction to Spring 5.x and REST</name>
+
+    <modules>
+        <module>spring.introduction/lab-code</module>
+        <module>spring.javaconfig/lab-code</module>
+        <module>spring-data-jpa/lab-code</module>
+        <module>spring-data-jpa-boot/lab-code</module>
+        <module>spring-data-jpa-boot-db/solution-code</module>
+        <module>spring-data-query-methods/lab-code</module>
+        <module>spring-hotel-reservation/lab-code</module>
+        <module>spring-hotel-reservation-client/lab-code</module>
+        <module>spring-jdbc/lab-code</module>
+        <module>spring-rest-client/lab-code</module>        
+        <module>spring-rest-content/lab-code</module>
+        <module>spring-rest-content-client/lab-code</module>
+        <module>spring-rest-intro/lab-code</module>
+        <module>spring-rest-service/lab-code</module>
+        <!--<module>spring-rest-service-client/lab-code</module>-->
+        <module>spring.bean.dependencies/lab-code</module>
+        <module>spring.boot.flightservice/flight-service</module>
+    </modules>
+</project>

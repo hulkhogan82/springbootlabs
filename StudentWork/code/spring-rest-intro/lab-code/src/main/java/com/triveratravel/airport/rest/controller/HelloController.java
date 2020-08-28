@@ -1,5 +1,6 @@
 package com.triveratravel.airport.rest.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  * @author The Trivera Tech Team.
  */
+@RestController
 public class HelloController {
 
+	@RequestMapping("/hello")
 	public String sayHello() {
 		return "Hello";
 	}
