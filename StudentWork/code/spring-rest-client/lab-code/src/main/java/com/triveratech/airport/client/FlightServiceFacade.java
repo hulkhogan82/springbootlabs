@@ -19,52 +19,61 @@ import com.triveratech.airport.client.model.DepartureData;
  * <p>
  * This component and its source code representation are copyright protected and
  * proprietary to Trivera Technologies, LLC., Worldwide
- *
+ * <p>
  * This component and source code may be used for instructional and evaluation
  * purposes only. No part of this component or its source code may be sold,
  * transferred, or publicly posted, nor may it be used in a commercial or
  * production environment, without the express written consent of the Trivera
  * Technologies, Inc.
- *
+ * <p>
  * Copyright (c) 2020 Trivera Technologies, LLC. http://www.triveratech.com
  * </p>
- * 
+ *
  * @author The Trivera Tech Team.
  */
 @Component
 public class FlightServiceFacade {
 
-	@Value("${base.url}")
-	private String baseURL;
+    @Value("${base.url}")
+    private String baseURL;
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	/**
-	 * "/flights/departure/{flightNumber}"
-	 */
-	public DepartureData getFlightByFlightNumber(String flightNumber) {
-		String URL = baseURL + "/flights/departure/{flightNumber}";
-		return null;
-	}
+    /**
+     * "/flights/departure/{flightNumber}"
+     */
+    public DepartureData getFlightByFlightNumber(String flightNumber) {
+        String URL = baseURL + "/flights/departure/{flightNumber}";
+        return restTemplate.getForObject(URL, DepartureData.class, flightNumber);
+    }
 
-	/**
-	 * "/flights/departures"
-	 */
-	public List<DepartureData> getAllFlights() {
-		String URL = baseURL + "/flights/departures";
+    /**
+     * "/flights/departures"
+     */
+    public List<DepartureData> getAllFlights() {
+        String URL = baseURL + "/flights/departures";
+        ParameterizedTypeReference<List<DepartureData>> type = new ParameterizedTypeReference<List<DepartureData>>() {
+        };
+        ResponseEntity<List<DepartureData>> response = restTemplate.exchange(URL, HttpMethod.GET, null, type);
+        return response.getBody();
+    }
 
+    /**
+     * "/flights/departures/{destinationCode}"
+     */
+    public List<DepartureData> getFlightsDepartingTo(String destinationCode) {
+        String URL = baseURL + "/flights/departures/{destinationCode}";
 
-		return Collections.EMPTY_LIST;
-	}
+		UriTemplate uriTemplate = new UriTemplate(URL);
+		URI uri = uriTemplate.expand(destinationCode);
 
-	/**
-	 * "/flights/departures/{destinationCode}"
-	 */
-	public List<DepartureData> getFlightsDepartingTo(String destinationCode) {
-		String URL = baseURL + "/flights/departures/{destinationCode}";
+		ParameterizedTypeReference<List<DepartureData>> type = new ParameterizedTypeReference<List<DepartureData>>() {
+		};
 
-		return Collections.EMPTY_LIST;
-	}
+		ResponseEntity<List<DepartureData>> response = restTemplate.exchange(uri, HttpMethod.GET, null, type);
+
+		return response.getBody();
+    }
 
 }

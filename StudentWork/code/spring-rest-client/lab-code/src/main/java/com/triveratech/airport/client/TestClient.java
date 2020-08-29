@@ -25,6 +25,8 @@ import com.triveratech.airport.client.model.DepartureData;
  */
 public class TestClient {
 
+	// Make sure spring.rest.intro AirportApplication is running.That project returns the API data.
+
 	public static void main(String[] args) {
 		TestClient tc = new TestClient();
 		tc.test();
